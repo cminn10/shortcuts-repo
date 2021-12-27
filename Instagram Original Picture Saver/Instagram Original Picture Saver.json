@@ -1,0 +1,337 @@
+{
+   "WFWorkflowMinimumClientVersionString": "900",
+   "WFWorkflowMinimumClientVersion": 900,
+   "WFWorkflowIcon": {
+      "WFWorkflowIconStartColor": 4271458815,
+      "WFWorkflowIconGlyphNumber": 59784
+   },
+   "WFWorkflowClientVersion": "1144.4",
+   "WFWorkflowOutputContentItemClasses": [],
+   "WFWorkflowHasOutputFallback": false,
+   "WFWorkflowActions": [
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+         "WFWorkflowActionParameters": {
+            "WFTextActionText": "Touch on the tree-dot button on the right corner of the ins post, then copy the post link by touching on the \"Link\" button.",
+            "UUID": "E1A00501-9D32-4D77-8ED8-6D7FE5F30150"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.getclipboard",
+         "WFWorkflowActionParameters": {
+            "UUID": "D3DB58A2-95D0-4939-8964-7F8FE5FBDF3B"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Type": "Variable",
+               "Variable": {
+                  "Value": {
+                     "OutputUUID": "D3DB58A2-95D0-4939-8964-7F8FE5FBDF3B",
+                     "Type": "ActionOutput",
+                     "OutputName": "Clipboard"
+                  },
+                  "WFSerializationType": "WFTextTokenAttachment"
+               }
+            },
+            "WFControlFlowMode": 0,
+            "WFConditionalActionString": "https://www.instagram.com",
+            "GroupingIdentifier": "445E8450-2A6A-45DA-B944-FE98949D46BA",
+            "WFCondition": 999
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.alert",
+         "WFWorkflowActionParameters": {
+            "WFAlertActionMessage": "This is not a valid Instagram URL."
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.exit",
+         "WFWorkflowActionParameters": {}
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "445E8450-2A6A-45DA-B944-FE98949D46BA",
+            "UUID": "81DEDA30-04FF-4362-BBB6-49362F698424"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.text.split",
+         "WFWorkflowActionParameters": {
+            "Show-text": true,
+            "WFTextCustomSeparator": "/",
+            "UUID": "78647677-4379-49C2-9DA2-DE0210B76433",
+            "WFTextSeparator": "Custom",
+            "text": {
+               "Value": {
+                  "OutputUUID": "D3DB58A2-95D0-4939-8964-7F8FE5FBDF3B",
+                  "Type": "ActionOutput",
+                  "OutputName": "Clipboard"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.count",
+         "WFWorkflowActionParameters": {
+            "Input": {
+               "Value": {
+                  "OutputUUID": "78647677-4379-49C2-9DA2-DE0210B76433",
+                  "Type": "ActionOutput",
+                  "OutputName": "Split Text"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFCountType": "Items",
+            "UUID": "E3C8BF6D-C389-4AAA-AD07-428A33E1DEA8"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "GroupingIdentifier": "C37E7AD2-3DE5-4949-A877-B61B4F213EA4",
+            "WFInput": {
+               "Type": "Variable",
+               "Variable": {
+                  "Value": {
+                     "OutputUUID": "E3C8BF6D-C389-4AAA-AD07-428A33E1DEA8",
+                     "Type": "ActionOutput",
+                     "OutputName": "Count"
+                  },
+                  "WFSerializationType": "WFTextTokenAttachment"
+               }
+            },
+            "WFControlFlowMode": 0,
+            "WFNumberValue": "7",
+            "WFCondition": 3
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.getitemfromlist",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "78647677-4379-49C2-9DA2-DE0210B76433",
+                  "Type": "ActionOutput",
+                  "OutputName": "Split Text"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFItemIndex": "6",
+            "CustomOutputName": "Item from List ",
+            "UUID": "5EC36749-854D-411B-9350-1E53413062E8",
+            "WFItemSpecifier": "Item At Index"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "5EC36749-854D-411B-9350-1E53413062E8",
+                  "Type": "ActionOutput",
+                  "OutputName": "Item from List "
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "ShortCode"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "GroupingIdentifier": "C37E7AD2-3DE5-4949-A877-B61B4F213EA4",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.getitemfromlist",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "78647677-4379-49C2-9DA2-DE0210B76433",
+                  "Type": "ActionOutput",
+                  "OutputName": "Split Text"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFItemIndex": "5",
+            "UUID": "B7CB3D18-E022-4A16-8A11-1F475B0BA5C2",
+            "WFItemSpecifier": "Item At Index"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "B7CB3D18-E022-4A16-8A11-1F475B0BA5C2",
+                  "Type": "ActionOutput",
+                  "OutputName": "Item from List"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFVariableName": "ShortCode"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "C37E7AD2-3DE5-4949-A877-B61B4F213EA4",
+            "UUID": "32AFF0F7-CB9E-4FC5-9AA1-9864DA08BCA0"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+         "WFWorkflowActionParameters": {
+            "WFTextActionText": {
+               "Value": {
+                  "string": "https://www.instagram.com/p/￼/media/?size=l",
+                  "attachmentsByRange": {
+                     "{28, 1}": {
+                        "VariableName": "ShortCode",
+                        "Type": "Variable"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "CustomOutputName": "GetURL",
+            "UUID": "3AD15253-D5C0-4E59-B101-BC852414FAE0"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuPrompt": "View or Save?",
+            "WFControlFlowMode": 0,
+            "WFMenuItems": [
+               "View now",
+               "Save to album"
+            ],
+            "GroupingIdentifier": "D39E17D9-573F-47D3-94B7-4AC9F1D1FC56"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuItemTitle": "View now",
+            "GroupingIdentifier": "D39E17D9-573F-47D3-94B7-4AC9F1D1FC56",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.showwebpage",
+         "WFWorkflowActionParameters": {
+            "WFURL": {
+               "Value": {
+                  "string": "￼",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "OutputUUID": "3AD15253-D5C0-4E59-B101-BC852414FAE0",
+                        "Type": "ActionOutput",
+                        "OutputName": "GetURL"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            }
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFMenuItemTitle": "Save to album",
+            "GroupingIdentifier": "D39E17D9-573F-47D3-94B7-4AC9F1D1FC56",
+            "WFControlFlowMode": 1
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.getwebpagecontents",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "string": "￼",
+                  "attachmentsByRange": {
+                     "{0, 1}": {
+                        "OutputUUID": "3AD15253-D5C0-4E59-B101-BC852414FAE0",
+                        "Type": "ActionOutput",
+                        "OutputName": "GetURL"
+                     }
+                  }
+               },
+               "WFSerializationType": "WFTextTokenString"
+            },
+            "UUID": "830E547D-98D4-4F1E-B15C-6BC8A74BFC05"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.savetocameraroll",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "830E547D-98D4-4F1E-B15C-6BC8A74BFC05",
+                  "Type": "ActionOutput",
+                  "OutputName": "Contents of Web Page"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "UUID": "0AE79337-0C06-491E-81D4-F77304B64709"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.notification",
+         "WFWorkflowActionParameters": {
+            "WFInput": {
+               "Value": {
+                  "OutputUUID": "0AE79337-0C06-491E-81D4-F77304B64709",
+                  "Type": "ActionOutput",
+                  "OutputName": "Saved Photo Media"
+               },
+               "WFSerializationType": "WFTextTokenAttachment"
+            },
+            "WFNotificationActionBody": "Saved to album!",
+            "UUID": "12E4DB73-EF4E-4118-AE8F-62FC8A310DAC"
+         }
+      },
+      {
+         "WFWorkflowActionIdentifier": "is.workflow.actions.choosefrommenu",
+         "WFWorkflowActionParameters": {
+            "WFControlFlowMode": 2,
+            "GroupingIdentifier": "D39E17D9-573F-47D3-94B7-4AC9F1D1FC56",
+            "UUID": "254277D6-172E-4B44-BE81-B37D25993FA9"
+         }
+      }
+   ],
+   "WFWorkflowInputContentItemClasses": [
+      "WFAppStoreAppContentItem",
+      "WFArticleContentItem",
+      "WFContactContentItem",
+      "WFDateContentItem",
+      "WFEmailAddressContentItem",
+      "WFFolderContentItem",
+      "WFGenericFileContentItem",
+      "WFImageContentItem",
+      "WFiTunesProductContentItem",
+      "WFLocationContentItem",
+      "WFDCMapsLinkContentItem",
+      "WFAVAssetContentItem",
+      "WFPDFContentItem",
+      "WFPhoneNumberContentItem",
+      "WFRichTextContentItem",
+      "WFSafariWebPageContentItem",
+      "WFStringContentItem",
+      "WFURLContentItem"
+   ],
+   "WFWorkflowImportQuestions": [],
+   "WFWorkflowTypes": [],
+   "WFQuickActionSurfaces": [],
+   "WFWorkflowHasShortcutInputVariables": false
+}
